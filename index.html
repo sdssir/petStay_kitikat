@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitikat Hotel Putrajaya · Cat Hotel, Grooming &amp; Daycare</title>
+<meta name="description" content="KITIKAT HOTEL (Hotel Kucing) Putrajaya — a boutique cat hotel in Presint 15 with private wooden suites, a certified professional cat groomer, and daycare. Book in seconds via WhatsApp.">
+<meta property="og:title" content="Kitikat Hotel Putrajaya · Hotel Kucing">
+<meta property="og:description" content="Private wooden suites, certified grooming and daycare for cats in Presint 15, Putrajaya. Book via WhatsApp.">
+<meta property="og:image" content="images/web/reception.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%232F7F93'/%3E%3Cpath fill='%23fff' d='M18 44c0-9 5-17 14-17s14 8 14 17H18zM20 23l8 5-4 6zM44 23l-8 5 4 6z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KITIKAT HOTEL — single-file prototype
+   Brand palette lifted from the shop: teal feature wall, warm
+   rubberwood suites, cream concrete floor, black steel frames.
+   ============================================================ */
+:root{
+  --teal:#2F7F93; --teal-deep:#1F5E6E; --teal-soft:#E3F0F3;
+  --wood:#C9924F; --wood-deep:#A2702F; --wood-soft:#F6E7CF;
+  --cream:#FBF7F1; --paper:#FFFFFF; --ink:#1C2A31; --muted:#5B6B72; --line:#E6DED2;
+  --wa:#25D366; --wa-deep:#1DA851;
+  --shadow:0 12px 40px rgba(28,42,49,.12); --shadow-sm:0 4px 14px rgba(28,42,49,.08);
+  --r:20px; --r-sm:12px;
+  --font-display:"Fraunces",Georgia,serif; --font-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);color:var(--ink);background:var(--cream);line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,.display{font-family:var(--font-display);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4vw,3rem)}
+h3{font-size:1.35rem}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+section{padding:clamp(64px,8vw,110px) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--wood);border-radius:2px}
+.lede{color:var(--muted);font-size:1.1rem;max-width:62ch}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(32px,4vw,56px)}
+.sec-head.center{text-align:center;justify-items:center}
+.sec-head.center .eyebrow::before{display:none}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:1rem;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 10px 24px rgba(37,211,102,.35)}
+.btn-wa:hover{background:var(--wa-deep)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-teal:hover{background:var(--teal-deep)}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.55);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.26)}
+.btn-outline{border:1.5px solid var(--ink);color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:#fff}
+
+/* Nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,box-shadow .3s,padding .3s;padding:18px 0}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;font-family:var(--font-display);font-weight:700;font-size:1.25rem;letter-spacing:.02em}
+.brand .mark{width:42px;height:42px;border-radius:12px;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow-sm)}
+.brand .mark svg{width:28px;height:28px}
+.brand small{display:block;font-family:var(--font-body);font-weight:700;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85}
+.nav-links{display:flex;gap:28px;align-items:center;font-weight:600;color:#fff}
+.nav-links a{opacity:.9;position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--wood);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav .btn{padding:11px 18px;font-size:.92rem}
+.nav.solid{background:rgba(251,247,241,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:10px 0}
+.nav.solid .brand,.nav.solid .nav-links{color:var(--ink)}
+.burger{display:none;width:44px;height:44px;border-radius:12px;color:#fff;place-items:center}
+.nav.solid .burger{color:var(--ink)}
+.burger svg{width:26px;height:26px}
+.mobile-menu{position:fixed;inset:0;z-index:60;background:var(--cream);display:none;flex-direction:column;justify-content:center;align-items:center;gap:26px;font-family:var(--font-display);font-size:1.8rem}
+.mobile-menu.open{display:flex}
+.mobile-menu .close{position:absolute;top:18px;right:18px;width:44px;height:44px}
+
+/* Hero */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr);align-items:end;color:#fff;isolation:isolate;padding:0}
+.hero .slides{position:absolute;inset:0;z-index:-2;overflow:hidden;background:#1f2a31}
+.hero .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.6s ease,transform 7s linear}
+.hero .slides img.on{opacity:1;transform:scale(1)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(20,32,38,.55) 0%,rgba(20,32,38,.15) 35%,rgba(20,32,38,.72) 100%)}
+.hero .wrap{padding:140px 0 72px;display:grid;grid-template-columns:minmax(0,1fr);gap:28px;max-width:860px;margin-inline:auto;width:min(1180px,100% - 32px);min-width:0}
+.hero .pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);padding:8px 16px 8px 10px;border-radius:999px;font-weight:700;font-size:.9rem;justify-self:start;max-width:100%;flex-wrap:wrap;line-height:1.3}
+.hero .pill .stars{color:#FFC94D;letter-spacing:1px}
+.hero h1{font-size:clamp(2.6rem,6.2vw,5rem);font-weight:600;max-width:14ch}
+.hero h1 em{font-style:italic;color:#FFD9A8;font-weight:500}
+.hero p{font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:56ch;opacity:.95}
+.hero .cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero .facts{display:flex;flex-wrap:wrap;gap:12px 30px;font-size:.95rem;opacity:.95;padding-top:10px;border-top:1px solid rgba(255,255,255,.3)}
+.hero .facts span{display:flex;align-items:center;gap:8px}
+.hero .facts svg{width:18px;height:18px;color:#FFD9A8}
+.hero .dots{position:absolute;right:24px;bottom:28px;display:flex;gap:8px}
+.hero .dots button{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.45)}
+.hero .dots button.on{background:#fff;width:26px;border-radius:6px}
+.scroll-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;opacity:.75;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-hint i{width:1px;height:34px;background:#fff;animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* Trust strip */
+.trust{background:var(--paper);border-block:1px solid var(--line);padding:26px 0}
+.trust .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.trust .item{display:flex;align-items:center;gap:14px}
+.trust .ic{width:48px;height:48px;border-radius:14px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;flex:none}
+.trust .ic svg{width:24px;height:24px}
+.trust b{display:block;font-size:1.05rem}
+.trust small{color:var(--muted)}
+
+/* Intro */
+.intro .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
+.intro .photo{position:relative}
+.intro .photo img{border-radius:var(--r);box-shadow:var(--shadow);aspect-ratio:4/3.6;object-fit:cover;width:100%}
+.intro .photo .float{position:absolute;right:-18px;bottom:-22px;background:var(--paper);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;max-width:280px}
+.intro .photo .float img{width:54px;height:54px;border-radius:12px;aspect-ratio:1;box-shadow:none}
+.intro .photo .float b{display:block;font-size:.95rem}
+.intro .photo .float small{color:var(--muted);font-size:.8rem;line-height:1.3;display:block}
+.intro h2{margin:12px 0 18px}
+.intro p+p{margin-top:14px}
+.intro .checks{display:grid;gap:10px;margin:26px 0 0;list-style:none}
+.intro .checks li{display:flex;gap:12px;align-items:flex-start}
+.intro .checks svg{width:22px;height:22px;flex:none;color:var(--wood)}
+.intro .checks b{display:block}
+
+/* Services */
+.services{background:var(--paper)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.svc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.svc .img{position:relative;aspect-ratio:4/3;overflow:hidden}
+.svc .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.svc:hover .img img{transform:scale(1.06)}
+.svc .tag{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);border-radius:999px;padding:6px 12px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.svc .body{padding:24px;display:grid;gap:12px;flex:1;align-content:start}
+.svc .price{display:flex;align-items:baseline;gap:6px;color:var(--wood-deep);font-weight:800}
+.svc .price b{font-size:1.5rem;font-family:var(--font-display)}
+.svc .price small{color:var(--muted);font-weight:600}
+.svc ul{list-style:none;display:grid;gap:8px;color:var(--muted);font-size:.95rem}
+.svc li{display:flex;gap:10px;align-items:flex-start}
+.svc li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--wood);flex:none;margin-top:9px}
+.svc .body .btn{margin-top:auto;justify-self:start}
+.svc.featured{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+
+/* Suites */
+.suites .grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:220px;gap:16px}
+.suites .cell{border-radius:var(--r-sm);overflow:hidden;position:relative;grid-column:span 4}
+.suites .cell img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.suites .cell:hover img{transform:scale(1.05)}
+.suites .cell.big{grid-column:span 8;grid-row:span 2}
+.suites .cell.tall{grid-row:span 2}
+.suites .cap{position:absolute;left:12px;bottom:12px;background:rgba(28,42,49,.72);color:#fff;font-size:.8rem;font-weight:700;padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px)}
+.suites .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:40px}
+.suites .feat div{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);padding:20px;display:grid;gap:8px}
+.suites .feat svg{width:28px;height:28px;color:var(--teal)}
+.suites .feat b{font-size:1.05rem}
+.suites .feat p{color:var(--muted);font-size:.93rem}
+
+/* Steps */
+.steps{background:var(--teal);color:#fff;position:relative;overflow:hidden}
+.steps::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.06)}
+.steps .eyebrow{color:#FFD9A8}
+.steps .lede{color:rgba(255,255,255,.85)}
+.steps .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;z-index:1}
+.step{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:26px;display:grid;gap:12px}
+.step .n{font-family:var(--font-display);font-size:2.6rem;line-height:1;color:#FFD9A8}
+.step b{font-size:1.1rem}
+.step p{color:rgba(255,255,255,.82);font-size:.95rem}
+
+/* Gallery */
+.gallery .masonry{columns:4 220px;column-gap:14px}
+.gallery .masonry a{display:block;break-inside:avoid;margin-bottom:14px;border-radius:var(--r-sm);overflow:hidden;position:relative}
+.gallery .masonry img{width:100%;transition:transform .6s}
+.gallery .masonry a:hover img{transform:scale(1.04)}
+.gallery .masonry a::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(28,42,49,.35));opacity:0;transition:opacity .3s}
+.gallery .masonry a:hover::after{opacity:1}
+.ig-cta{margin-top:32px;text-align:center}
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(15,22,26,.94);display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(92vw,1100px);max-height:86vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lightbox button{position:absolute;color:#fff;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);display:grid;place-items:center}
+.lightbox button svg{width:26px;height:26px}
+.lightbox .x{top:18px;right:18px}
+.lightbox .prev{left:18px;top:50%;transform:translateY(-50%)}
+.lightbox .next{right:18px;top:50%;transform:translateY(-50%)}
+
+/* Reviews */
+.reviews{background:var(--paper)}
+.reviews .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.rating-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:34px;display:grid;gap:14px;text-align:center;justify-items:center}
+.rating-card .big{font-family:var(--font-display);font-size:5rem;line-height:1;color:var(--ink)}
+.rating-card .stars{color:#F5B301;font-size:1.6rem;letter-spacing:4px}
+.rating-card small{color:var(--muted)}
+.rating-card .g{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.rating-card .g svg{width:22px;height:22px}
+.why{display:grid;gap:18px}
+.why .item{display:flex;gap:16px;align-items:flex-start}
+.why .ic{width:46px;height:46px;border-radius:14px;background:var(--wood-soft);color:var(--wood-deep);display:grid;place-items:center;flex:none}
+.why .ic svg{width:24px;height:24px}
+.why b{display:block;font-size:1.05rem}
+.why p{color:var(--muted);font-size:.95rem}
+
+/* Booking */
+.booking{background:linear-gradient(180deg,var(--cream),#F3EADC)}
+.booking .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:start}
+.book-card{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(22px,3vw,34px);display:grid;gap:18px}
+.book-card h3{font-size:1.5rem}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--cream);padding:6px;border-radius:14px}
+.seg button{padding:12px 8px;border-radius:10px;font-weight:700;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.9rem;transition:background .2s,color .2s}
+.seg button svg{width:22px;height:22px}
+.seg button.on{background:var(--teal);color:#fff;box-shadow:0 6px 16px rgba(47,127,147,.3)}
+.field{display:grid;gap:6px}
+.field label{font-size:.82rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:inherit;color:var(--ink);transition:border .2s,box-shadow .2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
+.field textarea{min-height:84px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.estimate{background:var(--cream);border-radius:14px;padding:16px 18px;display:grid;gap:6px}
+.estimate .line{display:flex;justify-content:space-between;color:var(--muted);font-size:.93rem}
+.estimate .total{display:flex;justify-content:space-between;align-items:baseline;font-weight:800;border-top:1px dashed var(--line);padding-top:8px;margin-top:4px}
+.estimate .total b{font-family:var(--font-display);font-size:1.6rem;color:var(--teal-deep)}
+.estimate small{color:var(--muted);font-size:.78rem}
+.book-card .btn-wa{width:100%;font-size:1.05rem;padding:16px}
+.book-card .fine{font-size:.82rem;color:var(--muted);text-align:center}
+.preview{background:#E7F8EE;border:1px solid #BFEBD1;border-radius:14px;padding:14px 16px;font-size:.9rem;white-space:pre-wrap;color:#1b4d31;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.5;max-height:200px;overflow:auto}
+.preview-label{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.preview-label i{width:8px;height:8px;border-radius:50%;background:var(--wa);display:inline-block;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.booking .side{display:grid;gap:22px;position:sticky;top:96px}
+.booking .side .list{display:grid;gap:16px}
+.booking .side .list div{display:flex;gap:14px;align-items:flex-start}
+.booking .side .list svg{width:26px;height:26px;color:var(--teal);flex:none}
+.booking .side .list b{display:block}
+.booking .side .list p{color:var(--muted);font-size:.95rem}
+.phone-mock{background:var(--paper);border-radius:var(--r);padding:18px;box-shadow:var(--shadow-sm);display:grid;gap:10px}
+.phone-mock .hdr{display:flex;align-items:center;gap:10px;font-weight:700}
+.phone-mock .hdr .av{width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:.8rem}
+.phone-mock .hdr small{display:block;color:var(--wa-deep);font-weight:600;font-size:.75rem}
+.bubble{background:#DCF8C6;border-radius:12px 12px 12px 2px;padding:10px 12px;font-size:.88rem;max-width:88%}
+.bubble.me{background:#F1F0F0;border-radius:12px 12px 2px 12px;justify-self:end}
+
+/* FAQ */
+.faq .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;align-items:start}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:4px 20px}
+summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:700;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--font-display);font-size:1.6rem;color:var(--teal);transition:transform .3s;line-height:1}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);padding:0 0 18px;font-size:.97rem}
+
+/* Location */
+.location{background:var(--paper)}
+.location .grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(28px,4vw,56px);align-items:stretch}
+.contact-list{display:grid;gap:18px;margin-top:26px}
+.contact-list a,.contact-list div{display:flex;gap:14px;align-items:flex-start}
+.contact-list .ic{width:46px;height:46px;border-radius:14px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;flex:none}
+.contact-list .ic svg{width:22px;height:22px}
+.contact-list b{display:block;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.contact-list span{font-weight:600}
+.contact-list a:hover span{color:var(--teal)}
+.map{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);min-height:420px;position:relative;background:var(--teal-soft)}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+.map .open{position:absolute;left:16px;bottom:16px}
+.socials{display:flex;gap:10px;margin-top:26px}
+.socials a{width:46px;height:46px;border-radius:14px;border:1.5px solid var(--line);display:grid;place-items:center;transition:background .2s,color .2s,border .2s}
+.socials a:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.socials svg{width:22px;height:22px}
+
+/* Final CTA + footer */
+.final{background:var(--ink);color:#fff;text-align:center;position:relative;overflow:hidden}
+.final img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22}
+.final .wrap{position:relative;display:grid;gap:22px;justify-items:center}
+.final h2{font-size:clamp(2rem,4.6vw,3.4rem);max-width:18ch}
+.final p{opacity:.85;max-width:52ch}
+footer{background:#121b20;color:rgba(255,255,255,.7);padding:34px 0;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer .brand{font-size:1.05rem}
+footer .brand .mark{width:34px;height:34px}
+footer .brand .mark svg{width:22px;height:22px}
+footer nav{display:flex;gap:18px;flex-wrap:wrap}
+
+/* Floating WhatsApp */
+.fab{position:fixed;right:20px;bottom:20px;z-index:40;display:flex;align-items:center;gap:10px;background:var(--wa);color:#fff;border-radius:999px;padding:12px 20px 12px 14px;font-weight:800;box-shadow:0 12px 30px rgba(37,211,102,.45);transition:transform .2s}
+.fab:hover{transform:translateY(-3px)}
+.fab svg{width:26px;height:26px}
+.fab .ping{position:absolute;inset:-5px;border-radius:999px;border:2px solid var(--wa);animation:ping 2s infinite;pointer-events:none}
+@keyframes ping{0%{transform:scale(.92);opacity:.9}100%{transform:scale(1.25);opacity:0}}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* Responsive */
+@media (max-width:1000px){
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .steps .grid{grid-template-columns:1fr 1fr}
+  .intro .grid,.reviews .grid,.booking .grid,.location .grid,.faq .grid{grid-template-columns:1fr}
+  .booking .side{position:static}
+  .suites .cell{grid-column:span 6}.suites .cell.big{grid-column:span 12}
+}
+@media (max-width:720px){
+  .nav-links,.nav .btn-wa{display:none}
+  .burger{display:grid}
+  .svc-grid{grid-template-columns:1fr}
+  .steps .grid{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+  .suites .grid{grid-auto-rows:180px}
+  .suites .cell,.suites .cell.big{grid-column:span 12}.suites .cell.tall{grid-row:span 1}
+  .intro .photo .float{right:8px;bottom:-16px}
+  .hero .wrap{padding-top:120px}
+  .fab span{display:none}.fab{padding:14px}
+  .seg button{font-size:.8rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Kitikat Hotel home">
+      <span class="mark"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#2F7F93"/><path fill="#fff" d="M18 46c0-9 5-17 14-17s14 8 14 17H18zM20 25l8 5-4 6zM44 25l-8 5 4 6z"/><circle cx="27" cy="36" r="2" fill="#2F7F93"/><circle cx="37" cy="36" r="2" fill="#2F7F93"/></svg></span>
+      <span>Kitikat Hotel<small>Putrajaya · Hotel Kucing</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#suites">Suites</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+      <a href="#location">Find us</a>
+    </nav>
+    <a class="btn btn-wa wa-link" href="#" data-msg="Hi Kitikat Hotel! I'd like to make a booking.">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+      Book on WhatsApp
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="closeMenu" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="28" height="28"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <a href="#services">Services</a><a href="#suites">Suites</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#faq">FAQ</a><a href="#location">Find us</a>
+  <a class="btn btn-wa wa-link" href="#" data-msg="Hi Kitikat Hotel! I'd like to make a booking." style="font-family:var(--font-body);font-size:1rem">Book on WhatsApp</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="slides" id="slides">
+    <img src="images/web/reception.jpg" class="on" alt="Kitikat Hotel reception with teal feature wall" fetchpriority="high">
+    <img src="images/web/hall-cats.jpg" alt="Cat walking past the tall windows of the play hall">
+    <img src="images/web/suites.jpg" alt="Rows of private wooden cat suites with LED lighting">
+    <img src="images/web/playroom.jpg" alt="Cats playing in the open play area">
+  </div>
+  <div class="wrap">
+    <span class="pill"><span class="stars">★★★★★</span> 4.9 on Google · Loved by Putrajaya cat parents</span>
+    <h1>A boutique hotel where your cat is the <em>honoured guest</em></h1>
+    <p>Private wooden suites, a certified professional groomer and a sunlit play hall in Presint 15, Putrajaya. Drop off with peace of mind, pick up a happy cat.</p>
+    <div class="cta">
+      <a class="btn btn-wa wa-link" href="#" data-msg="Hi Kitikat Hotel! I'd like to check availability for my cat.">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+        Check availability
+      </a>
+      <a class="btn btn-ghost" href="#suites">See the suites</a>
+    </div>
+    <div class="facts">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Cat hotel · boarding</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l12 12M6 15l12-12M4 21l4-4M16 21l4-4"/></svg>Certified grooming</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Daycare</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Presint 15, Putrajaya</span>
+    </div>
+  </div>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+  <div class="scroll-hint" aria-hidden="true"><i></i>Scroll</div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust">
+  <div class="wrap">
+    <div class="item rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.4 7-6.2-3.5L5.8 21l1.4-7L2 9.3l7-.8z"/></svg></div><div><b>4.9 ★ Google rating</b><small>Rated by real cat parents</small></div></div>
+    <div class="item rv d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5z"/></svg></div><div><b>Certified groomer</b><small>Professional cat grooming on site</small></div></div>
+    <div class="item rv d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div><div><b>Private wooden suites</b><small>Own litter, water &amp; resting shelf</small></div></div>
+    <div class="item rv d3"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.6-.8L3 21l1.9-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div><div><b>Book via WhatsApp</b><small>Reply fast, no app to install</small></div></div>
+  </div>
+</div>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap grid">
+    <div class="rv">
+      <span class="eyebrow">Welcome · Selamat datang</span>
+      <h2>Not a cage. A cosy little hotel room, built for cats.</h2>
+      <p class="lede">Kitikat Hotel is a dedicated cat-only hotel on Jalan Diplomatik, Presint 15. Every guest gets a private rubberwood suite with mesh ventilation, a resting shelf, fresh water and their own litter tray, plus time in the bright play hall with cat trees, tunnels and an exercise wheel.</p>
+      <p class="lede">Whether you are away for a weekend, travelling for balik kampung, or just need a trusted groomer, your cat is cared for by people who genuinely love them.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg><div><b>Cats only, always</b><span>No barking neighbours. A calm, quiet space designed around feline comfort.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg><div><b>Air-conditioned &amp; naturally lit</b><span>Floor-to-ceiling windows and cool air all day long.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg><div><b>Updates while you are away</b><span>Ask for photo updates on WhatsApp and see how your cat is settling in.</span></div></li>
+      </ul>
+    </div>
+    <div class="photo rv d1">
+      <img src="images/web/tabby-cabin.jpg" alt="Tabby cat relaxing on the floor in front of the wooden suites">
+      <div class="float">
+        <img src="images/web/kitten-peek.jpg" alt="">
+        <div><b>“Love is a perpetual hotel”</b><small>The quote painted on our lounge wall, and how we treat every guest.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Our services</span>
+      <h2>Three ways we take care of your cat</h2>
+      <p class="lede">Simple packages, clear rates. Mix and match: many guests add a grooming session at the end of their stay so they go home fluffy and fresh.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc featured rv">
+        <div class="img"><img src="images/web/grey-suite-2.jpg" alt="Grey cat standing in its private wooden suite" loading="lazy"><span class="tag">Most popular</span></div>
+        <div class="body">
+          <h3>Cat Hotel · Boarding</h3>
+          <div class="price"><small>from</small><b data-price="hotel-standard"></b><small>/ night</small></div>
+          <ul>
+            <li>Private wooden suite with LED lighting &amp; mesh ventilation</li>
+            <li>Own litter tray, water dispenser and resting shelf</li>
+            <li>Supervised playtime in the play hall daily</li>
+            <li>Feeding on your cat's usual schedule &amp; food</li>
+            <li>Photo updates on request</li>
+          </ul>
+          <button class="btn btn-teal" data-book="hotel">Book a stay</button>
+        </div>
+      </article>
+      <article class="svc rv d1">
+        <div class="img"><img src="images/web/fluffy-tower.jpg" alt="Long-haired cat sitting on a cat tree after grooming" loading="lazy"><span class="tag">Certified groomer</span></div>
+        <div class="body">
+          <h3>Grooming</h3>
+          <div class="price"><small>from</small><b data-price="groom-basic"></b><small>/ session</small></div>
+          <ul>
+            <li>Handled by a certified professional cat groomer</li>
+            <li>Bath, blow-dry, brushing &amp; de-shedding</li>
+            <li>Nail trim, ear cleaning and sanitary trim</li>
+            <li>Gentle approach for shy or senior cats</li>
+            <li>Full groom package for long-haired breeds</li>
+          </ul>
+          <button class="btn btn-teal" data-book="grooming">Book grooming</button>
+        </div>
+      </article>
+      <article class="svc rv d2">
+        <div class="img"><img src="images/web/play-feather.jpg" alt="Grey tabby playing with a feather toy in the play area" loading="lazy"><span class="tag">Day guests</span></div>
+        <div class="body">
+          <h3>Daycare</h3>
+          <div class="price"><small>from</small><b data-price="daycare"></b><small>/ day</small></div>
+          <ul>
+            <li>Drop off in the morning, pick up in the evening</li>
+            <li>Play hall access with cat trees, wheel &amp; tunnels</li>
+            <li>Ideal for renovation days, house guests or long work days</li>
+            <li>Own suite to nap in between play sessions</li>
+            <li>Add a groom and collect a fresh cat</li>
+          </ul>
+          <button class="btn btn-teal" data-book="daycare">Book daycare</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUITES ============ -->
+<section class="suites" id="suites">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">The suites</span>
+      <h2>Handmade wooden suites, with room to stretch</h2>
+      <p class="lede">Solid rubberwood, black steel frames and clear panels so your cat can watch the world go by. Each suite rolls on castors so we can rearrange the space for shy guests or bonded pairs.</p>
+    </div>
+    <div class="grid">
+      <a class="cell big rv" href="images/web/suites.jpg" data-lb><img src="images/web/suites.jpg" alt="Row of lit wooden cat suites" loading="lazy"><span class="cap">The suite wing</span></a>
+      <a class="cell tall rv d1" href="images/web/suite-bed.jpg" data-lb><img src="images/web/suite-bed.jpg" alt="Inside a suite: bed, litter tray, water and a cat on the shelf" loading="lazy"><span class="cap">Inside a suite</span></a>
+      <a class="cell rv d2" href="images/web/suite-interior.jpg" data-lb><img src="images/web/suite-interior.jpg" alt="Suite interior with cat silhouette cut-out and litter tray" loading="lazy"><span class="cap">Own litter &amp; water</span></a>
+      <a class="cell rv d3" href="images/web/ginger-suite.jpg" data-lb><img src="images/web/ginger-suite.jpg" alt="Ginger cat sitting in its suite with a toy mouse" loading="lazy"><span class="cap">Guest in residence</span></a>
+    </div>
+    <div class="feat">
+      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg><b>Two-level layout</b><p>A raised resting shelf and a lower level for litter and water, so sleeping and toileting never mix.</p></div>
+      <div class="rv d1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg><b>Mesh ventilation</b><p>Steel mesh panels keep the air moving while the clear front lets in natural light.</p></div>
+      <div class="rv d2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14M2 19h20M8 3v16M16 3v16"/></svg><b>Play hall access</b><p>Scheduled free-roam sessions in the hall with cat trees, tunnels, scratchers and an exercise wheel.</p></div>
+      <div class="rv d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg><b>Daily housekeeping</b><p>Litter scooped, water refreshed and suites wiped down every day of the stay.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="steps">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">How it works</span>
+      <h2>Booked in under a minute</h2>
+      <p class="lede">No sign-ups, no forms to print. Everything happens on WhatsApp, the app you already use.</p>
+    </div>
+    <div class="grid">
+      <div class="step rv"><span class="n">01</span><b>Send your dates</b><p>Use the booking form below or tap any WhatsApp button. Tell us your cat's name, dates and the service you need.</p></div>
+      <div class="step rv d1"><span class="n">02</span><b>We confirm</b><p>We reply with availability, the rate and anything to bring, such as your cat's usual food and vaccination card.</p></div>
+      <div class="step rv d2"><span class="n">03</span><b>Check-in day</b><p>Drop your cat at 6A Jalan Diplomatik. We settle them into their suite and give them time to explore.</p></div>
+      <div class="step rv d3"><span class="n">04</span><b>Enjoy your trip</b><p>Ask for photo updates any time. Add a grooming session and pick up a clean, calm, happy cat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Gallery</span>
+      <h2>Life at Kitikat</h2>
+      <p class="lede">A few of our recent guests enjoying the play hall, the window seats and their suites.</p>
+    </div>
+    <div class="masonry rv">
+      <a href="images/web/siamese-wheel.jpg" data-lb><img src="images/web/siamese-wheel.jpg" alt="Siamese cat in front of the exercise wheel" loading="lazy"></a>
+      <a href="images/web/window-pair.jpg" data-lb><img src="images/web/window-pair.jpg" alt="Two cats watching the street from the window" loading="lazy"></a>
+      <a href="images/web/calico-rug.jpg" data-lb><img src="images/web/calico-rug.jpg" alt="Calico cat lounging on the geometric rug" loading="lazy"></a>
+      <a href="images/web/tuxedo.jpg" data-lb><img src="images/web/tuxedo.jpg" alt="Tuxedo cat sitting in front of the suites" loading="lazy"></a>
+      <a href="images/web/window-tree.jpg" data-lb><img src="images/web/window-tree.jpg" alt="Tabby cat exploring near the cat trees by the window" loading="lazy"></a>
+      <a href="images/web/white-condo.jpg" data-lb><img src="images/web/white-condo.jpg" alt="White cat stepping out of a cat condo" loading="lazy"></a>
+      <a href="images/web/lounge.jpg" data-lb><img src="images/web/lounge.jpg" alt="Owner lounge with benches and cat portraits" loading="lazy"></a>
+      <a href="images/web/fluffy-condo.jpg" data-lb><img src="images/web/fluffy-condo.jpg" alt="Fluffy cat standing by its water dispenser" loading="lazy"></a>
+      <a href="images/web/wheel-tabby.jpg" data-lb><img src="images/web/wheel-tabby.jpg" alt="Tabby cat looking through the exercise wheel" loading="lazy"></a>
+      <a href="images/web/tabby-tree.jpg" data-lb><img src="images/web/tabby-tree.jpg" alt="Tabby cat meowing under a cat tree" loading="lazy"></a>
+      <a href="images/web/entrance.jpg" data-lb><img src="images/web/entrance.jpg" alt="Hotel entrance with Kitikat logo on the glass door" loading="lazy"></a>
+      <a href="images/web/grey-suite.jpg" data-lb><img src="images/web/grey-suite.jpg" alt="Grey cat on the shelf of its suite" loading="lazy"></a>
+      <a href="images/web/walk-tabby.jpg" data-lb><img src="images/web/walk-tabby.jpg" alt="Tabby cat walking across the patterned floor" loading="lazy"></a>
+      <a href="images/web/door-logo.jpg" data-lb><img src="images/web/door-logo.jpg" alt="View through the glass door into the hotel" loading="lazy"></a>
+    </div>
+    <div class="ig-cta rv">
+      <a class="btn btn-outline" href="https://www.instagram.com/kitikat.hotel/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        More on Instagram @kitikat.hotel
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews">
+  <div class="wrap grid">
+    <div class="rating-card rv">
+      <span class="big">4.9</span>
+      <span class="stars">★★★★★</span>
+      <small>Google rating · Hotel Kucing Putrajaya</small>
+      <span class="g"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6A10 10 0 0 0 12 22z"/><path fill="#FBBC05" d="M6.4 14a6 6 0 0 1 0-3.9V7.5H3.1a10 10 0 0 0 0 9z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.8-2.8A10 10 0 0 0 3.1 7.5L6.4 10C7.2 7.8 9.4 6 12 6z"/></svg> Reviews on Google</span>
+      <a class="btn btn-outline" href="https://maps.app.goo.gl/BW48E78k2Mytjfse8" target="_blank" rel="noopener">Read the reviews</a>
+    </div>
+    <div class="rv d1">
+      <span class="eyebrow">Why cat parents trust us</span>
+      <h2 style="margin:12px 0 26px">Peace of mind, from drop-off to pick-up</h2>
+      <div class="why">
+        <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div><div><b>Treated like family</b><p>Small team, personal attention. We learn each cat's quirks, from the shy hider to the greedy eater.</p></div></div>
+        <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><div><b>Photo updates on WhatsApp</b><p>Ask any time and we'll send a picture of your cat, so you can relax wherever you are.</p></div></div>
+        <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5z"/></svg></div><div><b>Clean, safe and cat-only</b><p>Vaccination cards checked at check-in, suites cleaned daily, and no dogs on the premises.</p></div></div>
+        <div class="item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b>Easy to reach</b><p>First-floor shoplot on Jalan Diplomatik, Presint 15, minutes from the Putrajaya government precincts and Cyberjaya.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="booking" id="book">
+  <div class="wrap grid">
+    <div class="book-card rv">
+      <div>
+        <span class="eyebrow">Book now</span>
+        <h3 style="margin-top:10px">Reserve a suite via WhatsApp</h3>
+        <p style="color:var(--muted);font-size:.95rem;margin-top:6px">Fill this in and we'll open WhatsApp with your request ready to send. We reply with confirmation.</p>
+      </div>
+      <div class="seg" id="seg" role="tablist" aria-label="Service">
+        <button class="on" data-svc="hotel" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Hotel stay</button>
+        <button data-svc="daycare" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Daycare</button>
+        <button data-svc="grooming" role="tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3l12 12M6 15l12-12M4 21l4-4M16 21l4-4"/></svg>Grooming</button>
+      </div>
+      <form id="bookForm" novalidate>
+        <div style="display:grid;gap:14px">
+          <div class="row2">
+            <div class="field"><label for="ownerName">Your name</label><input id="ownerName" type="text" placeholder="e.g. Aina" autocomplete="name"></div>
+            <div class="field"><label for="catName">Cat's name(s)</label><input id="catName" type="text" placeholder="e.g. Oyen &amp; Tompok"></div>
+          </div>
+          <div class="row2">
+            <div class="field" id="fIn"><label for="dateIn" id="lblIn">Check-in</label><input id="dateIn" type="date"></div>
+            <div class="field" id="fOut"><label for="dateOut">Check-out</label><input id="dateOut" type="date"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="cats">Number of cats</label><select id="cats"><option value="1">1 cat</option><option value="2">2 cats</option><option value="3">3 cats</option><option value="4">4 cats</option></select></div>
+            <div class="field" id="fRoom"><label for="room">Suite type</label><select id="room"><option value="standard">Standard suite</option><option value="deluxe">Deluxe suite (larger)</option></select></div>
+            <div class="field" id="fGroom" hidden><label for="groomPkg">Grooming package</label><select id="groomPkg"><option value="basic">Basic groom</option><option value="full">Full groom (long hair)</option></select></div>
+          </div>
+          <div class="field" id="fAddon"><label style="display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0;font-size:.95rem;font-weight:600;color:var(--ink)"><input type="checkbox" id="addGroom" style="width:18px;height:18px;accent-color:var(--teal)"> Add a basic groom before pick-up</label></div>
+          <div class="field"><label for="notes">Notes (food, medication, temperament)</label><textarea id="notes" placeholder="e.g. Eats Royal Canin twice a day, a bit shy with strangers"></textarea></div>
+          <div class="estimate" id="estimate"></div>
+          <div class="preview-label"><i></i> WhatsApp message preview</div>
+          <div class="preview" id="preview"></div>
+          <button type="submit" class="btn btn-wa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+            Send booking request on WhatsApp
+          </button>
+          <p class="fine">Opens WhatsApp to <b>+60 11-3989 7014</b>. Nothing is charged online; we confirm the final rate by reply.</p>
+        </div>
+      </form>
+    </div>
+    <div class="side">
+      <div class="rv d1">
+        <span class="eyebrow">Why WhatsApp?</span>
+        <h2 style="margin:12px 0 18px">Booking that fits how Malaysians actually chat</h2>
+        <div class="list">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Instant, no account needed</b><p>Your request lands directly in our inbox with every detail filled in. No typing it out twice.</p></div></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><div><b>Same thread for updates</b><p>Confirmation, photos during the stay and pick-up reminders all live in one chat.</p></div></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M12 2l7 3v6c0 5-3.5 9-7 11-3.5-2-7-6-7-11V5z"/></svg><div><b>Clear price before you commit</b><p>The estimate on the left updates live. We confirm the final amount before check-in.</p></div></div>
+        </div>
+      </div>
+      <div class="phone-mock rv d2" aria-hidden="true">
+        <div class="hdr"><span class="av">KH</span><div>Kitikat Hotel<small>● typically replies within the hour</small></div></div>
+        <div class="bubble me">Hi Kitikat Hotel! Booking request: Hotel stay for Oyen, 2 nights, Standard suite…</div>
+        <div class="bubble">Hi Aina! Yes, a suite is available for those dates 😺 Please bring Oyen's usual food and vaccination card. See you at 10am!</div>
+        <div class="bubble me">Perfect, thank you! 🙏</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Good to know</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <div class="grid rv">
+      <details open><summary>What should I bring at check-in?</summary><p>Your cat's usual food (enough for the stay plus a day), their vaccination card, and anything that smells like home, such as a small blanket or toy. We provide litter, bowls, water dispensers and bedding.</p></details>
+      <details><summary>Does my cat need to be vaccinated?</summary><p>Yes. For the safety of every guest we ask that cats are up to date on their core vaccinations and free from fleas. Please mention any medical conditions in the notes when booking.</p></details>
+      <details><summary>Can two cats from the same home share a suite?</summary><p>Bonded cats can usually share a suite or be placed in adjoining suites. Let us know when you book and we will recommend the best arrangement.</p></details>
+      <details><summary>Will my cat get time outside the suite?</summary><p>Yes. Every guest has supervised free-roam time in the play hall, with cat trees, tunnels, scratchers and the exercise wheel. Shy cats are given their own quiet sessions.</p></details>
+      <details><summary>Can I get updates while I am away?</summary><p>Of course. Just ask in the WhatsApp chat and we will send a photo or short video of your cat.</p></details>
+      <details><summary>What are the drop-off and pick-up times?</summary><p>We arrange drop-off and pick-up by appointment on WhatsApp so there is always someone ready to welcome your cat. Tell us your preferred time when you book.</p></details>
+      <details><summary>Do you groom cats that are not staying at the hotel?</summary><p>Yes. Grooming is open to walk-in guests by appointment. Our groomer is a certified professional cat groomer and is experienced with nervous and long-haired cats.</p></details>
+      <details><summary>How do I pay?</summary><p>Payment is made at the hotel on check-in or pick-up. We will confirm the total on WhatsApp before your arrival so there are no surprises.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section class="location" id="location">
+  <div class="wrap grid">
+    <div class="rv">
+      <span class="eyebrow">Find us</span>
+      <h2 style="margin-top:12px">Presint 15, Putrajaya</h2>
+      <p class="lede" style="margin-top:14px">On the first floor of the shoplot at 6A Jalan Diplomatik, with parking right outside. Look for the Kitikat Hotel cat on the glass door.</p>
+      <div class="contact-list">
+        <a href="https://maps.app.goo.gl/BW48E78k2Mytjfse8" target="_blank" rel="noopener"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div><b>Address</b><span>6A, Jalan Diplomatik, Presint 15,<br>62050 Putrajaya, Malaysia</span></div></a>
+        <a href="tel:+601139897014"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2.2z"/></svg></div><div><b>Phone / WhatsApp</b><span>+60 11-3989 7014</span></div></a>
+        <a href="mailto:kitikat.hotel@gmail.com"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><b>Email</b><span>kitikat.hotel@gmail.com</span></div></a>
+        <div><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><b>Hours</b><span>Drop-off &amp; pick-up by appointment, daily.<br>WhatsApp us for same-day enquiries.</span></div></div>
+      </div>
+      <div class="socials">
+        <a href="https://www.instagram.com/kitikat.hotel/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="https://www.facebook.com/people/Kitikat-Hotel-Putrajaya/100094326482597/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg></a>
+        <a href="https://maps.app.goo.gl/BW48E78k2Mytjfse8" target="_blank" rel="noopener" aria-label="Google Maps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></a>
+        <a href="#" class="wa-link" data-msg="Hi Kitikat Hotel! I have a question." aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg></a>
+      </div>
+    </div>
+    <div class="map rv d1">
+      <iframe title="Map to Kitikat Hotel, Presint 15 Putrajaya" src="https://www.google.com/maps?q=2.9451251,101.721393&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <a class="btn btn-teal open" href="https://www.google.com/maps/dir/?api=1&destination=2.9451251,101.721393" target="_blank" rel="noopener">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <img src="images/web/hall-cats.jpg" alt="" loading="lazy">
+  <div class="wrap rv">
+    <span class="eyebrow" style="color:#FFD9A8">Ready when you are</span>
+    <h2>Give your cat a holiday too.</h2>
+    <p>Check availability for your dates in one tap. We'll reply on WhatsApp with confirmation and what to bring.</p>
+    <a class="btn btn-wa wa-link" href="#" data-msg="Hi Kitikat Hotel! I'd like to check availability for my cat.">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+      WhatsApp +60 11-3989 7014
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#2F7F93"/><path fill="#fff" d="M18 46c0-9 5-17 14-17s14 8 14 17H18zM20 25l8 5-4 6zM44 25l-8 5 4 6z"/></svg></span><span>Kitikat Hotel<small>Hotel Kucing Putrajaya</small></span></a>
+    <nav><a href="#services">Services</a><a href="#suites">Suites</a><a href="#gallery">Gallery</a><a href="#book">Book</a><a href="#faq">FAQ</a><a href="#location">Find us</a></nav>
+    <span>© <span id="year"></span> Kitikat Hotel · 6A Jalan Diplomatik, Presint 15, 62050 Putrajaya</span>
+  </div>
+</footer>
+
+<a class="fab wa-link" href="#" data-msg="Hi Kitikat Hotel! I'd like to make a booking." aria-label="Chat on WhatsApp">
+  <span class="ping"></span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
+  <span>Chat with us</span>
+</a>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
+  <button class="x" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="prev" id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <img id="lbImg" src="" alt="">
+  <button class="next" id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — the only block the business owner needs to edit.
+   Rates below are indicative placeholders for the prototype;
+   replace with the hotel's real price list.
+   ============================================================ */
+const CONFIG = {
+  whatsapp: "601139897014",          // +60 11-3989 7014, international format, digits only
+  currency: "RM",
+  prices: {
+    "hotel-standard": 25,            // per night
+    "hotel-deluxe":   35,            // per night
+    "daycare":        20,            // per day
+    "groom-basic":    45,            // per session
+    "groom-full":     80             // per session (long-haired / full package)
+  },
+  multiCatDiscount: 0.10             // 10% off the 2nd cat onwards (hotel & daycare)
+};
+
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+const fmt = n => `${CONFIG.currency} ${n.toFixed(0)}`;
+
+/* Fill price labels in the service cards */
+$$("[data-price]").forEach(el => el.textContent = fmt(CONFIG.prices[el.dataset.price]));
+$("#year").textContent = new Date().getFullYear();
+
+/* Generic WhatsApp links */
+const waUrl = msg => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+$$(".wa-link").forEach(a => {
+  a.href = waUrl(a.dataset.msg || "Hi Kitikat Hotel!");
+  a.target = "_blank"; a.rel = "noopener";
+});
+
+/* Nav */
+const nav = $("#nav");
+const onScroll = () => nav.classList.toggle("solid", window.scrollY > 40);
+onScroll(); addEventListener("scroll", onScroll, {passive:true});
+const menu = $("#mobileMenu");
+$("#burger").onclick = () => { menu.classList.add("open"); document.body.style.overflow = "hidden"; };
+const closeMenu = () => { menu.classList.remove("open"); document.body.style.overflow = ""; };
+$("#closeMenu").onclick = closeMenu;
+$$("#mobileMenu a").forEach(a => a.addEventListener("click", closeMenu));
+
+/* Hero slideshow */
+const slides = $$("#slides img"), dots = $("#dots");
+let cur = 0, timer;
+slides.forEach((_, i) => { const b = document.createElement("button"); b.onclick = () => go(i, true); dots.appendChild(b); });
+function go(i, manual){
+  slides[cur].classList.remove("on"); dots.children[cur].classList.remove("on");
+  cur = (i + slides.length) % slides.length;
+  slides[cur].classList.add("on"); dots.children[cur].classList.add("on");
+  if (manual){ clearInterval(timer); timer = setInterval(() => go(cur+1), 6000); }
+}
+dots.children[0].classList.add("on");
+timer = setInterval(() => go(cur+1), 6000);
+
+/* Reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+$$(".rv").forEach(el => io.observe(el));
+
+/* Lightbox */
+const lbLinks = $$("[data-lb]"), lb = $("#lightbox"), lbImg = $("#lbImg");
+let lbI = 0;
+const showLb = i => { lbI = (i + lbLinks.length) % lbLinks.length; lbImg.src = lbLinks[lbI].href; lbImg.alt = lbLinks[lbI].querySelector("img").alt; lb.classList.add("open"); document.body.style.overflow = "hidden"; };
+const hideLb = () => { lb.classList.remove("open"); document.body.style.overflow = ""; };
+lbLinks.forEach((a, i) => a.addEventListener("click", e => { e.preventDefault(); showLb(i); }));
+$("#lbClose").onclick = hideLb; $("#lbPrev").onclick = () => showLb(lbI-1); $("#lbNext").onclick = () => showLb(lbI+1);
+lb.addEventListener("click", e => { if (e.target === lb) hideLb(); });
+addEventListener("keydown", e => { if (!lb.classList.contains("open")) return; if (e.key === "Escape") hideLb(); if (e.key === "ArrowLeft") showLb(lbI-1); if (e.key === "ArrowRight") showLb(lbI+1); });
+
+/* ============================================================
+   Booking form → WhatsApp
+   ============================================================ */
+const form = $("#bookForm"), seg = $("#seg");
+const f = {
+  owner: $("#ownerName"), cat: $("#catName"), dateIn: $("#dateIn"), dateOut: $("#dateOut"),
+  cats: $("#cats"), room: $("#room"), groomPkg: $("#groomPkg"), addGroom: $("#addGroom"), notes: $("#notes")
+};
+let svc = "hotel";
+const today = new Date(); const iso = d => d.toISOString().slice(0,10);
+f.dateIn.min = iso(today); f.dateOut.min = iso(today);
+
+function setService(s){
+  svc = s;
+  $$("#seg button").forEach(b => b.classList.toggle("on", b.dataset.svc === s));
+  $("#fOut").hidden = s !== "hotel";
+  $("#fRoom").hidden = s !== "hotel";
+  $("#fGroom").hidden = s !== "grooming";
+  $("#fAddon").hidden = s === "grooming";
+  $("#lblIn").textContent = s === "hotel" ? "Check-in" : s === "daycare" ? "Daycare date" : "Appointment date";
+  update();
+}
+seg.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setService(b.dataset.svc); });
+$$("[data-book]").forEach(b => b.addEventListener("click", () => { setService(b.dataset.book); $("#book").scrollIntoView({behavior:"smooth"}); }));
+
+const nights = () => { const a = new Date(f.dateIn.value), b = new Date(f.dateOut.value); const n = Math.round((b - a) / 86400000); return isFinite(n) && n > 0 ? n : 0; };
+const niceDate = v => v ? new Date(v + "T00:00").toLocaleDateString("en-MY", {weekday:"short", day:"numeric", month:"short", year:"numeric"}) : "—";
+
+function calc(){
+  const n = +f.cats.value, lines = []; let total = 0;
+  const multi = cats => cats === 1 ? 1 : 1 + (cats - 1) * (1 - CONFIG.multiCatDiscount);
+  if (svc === "hotel"){
+    const nt = nights(), rate = CONFIG.prices["hotel-" + f.room.value];
+    const sub = rate * nt * multi(n);
+    lines.push([`${f.room.value === "deluxe" ? "Deluxe" : "Standard"} suite × ${nt || 0} night${nt === 1 ? "" : "s"} × ${n} cat${n > 1 ? "s" : ""}`, sub]);
+    total += sub;
+    if (f.addGroom.checked){ const g = CONFIG.prices["groom-basic"] * n; lines.push([`Basic groom × ${n}`, g]); total += g; }
+  } else if (svc === "daycare"){
+    const sub = CONFIG.prices.daycare * multi(n);
+    lines.push([`Daycare × 1 day × ${n} cat${n > 1 ? "s" : ""}`, sub]); total += sub;
+    if (f.addGroom.checked){ const g = CONFIG.prices["groom-basic"] * n; lines.push([`Basic groom × ${n}`, g]); total += g; }
+  } else {
+    const key = "groom-" + f.groomPkg.value, sub = CONFIG.prices[key] * n;
+    lines.push([`${f.groomPkg.value === "full" ? "Full" : "Basic"} groom × ${n} cat${n > 1 ? "s" : ""}`, sub]); total += sub;
+  }
+  return {lines, total, discounted: n > 1 && svc !== "grooming"};
+}
+
+function message(){
+  const svcName = {hotel:"Hotel stay (boarding)", daycare:"Daycare", grooming:"Grooming"}[svc];
+  const {total} = calc();
+  const L = [`Hi Kitikat Hotel! I'd like to make a booking 🐾`, ``, `*Service:* ${svcName}`];
+  if (svc === "hotel"){
+    L.push(`*Check-in:* ${niceDate(f.dateIn.value)}`, `*Check-out:* ${niceDate(f.dateOut.value)} (${nights()} night${nights() === 1 ? "" : "s"})`, `*Suite:* ${f.room.value === "deluxe" ? "Deluxe" : "Standard"}`);
+  } else {
+    L.push(`*Date:* ${niceDate(f.dateIn.value)}`);
+    if (svc === "grooming") L.push(`*Package:* ${f.groomPkg.value === "full" ? "Full groom" : "Basic groom"}`);
+  }
+  if (svc !== "grooming" && f.addGroom.checked) L.push(`*Add-on:* Basic groom before pick-up`);
+  L.push(`*Cats:* ${f.cats.value} — ${f.cat.value.trim() || "(name)"}`, `*Owner:* ${f.owner.value.trim() || "(your name)"}`);
+  if (f.notes.value.trim()) L.push(`*Notes:* ${f.notes.value.trim()}`);
+  L.push(``, `Estimated total from website: ${fmt(total)}`, `Please confirm availability. Thank you!`);
+  return L.join("\n");
+}
+
+function update(){
+  const {lines, total, discounted} = calc();
+  $("#estimate").innerHTML = lines.map(([l, v]) => `<div class="line"><span>${l}</span><span>${fmt(v)}</span></div>`).join("")
+    + `<div class="total"><span>Estimated total</span><b>${fmt(total)}</b></div>`
+    + `<small>${discounted ? `Includes ${CONFIG.multiCatDiscount*100}% off for additional cats. ` : ""}Indicative only — final rate confirmed on WhatsApp.</small>`;
+  $("#preview").textContent = message();
+}
+Object.values(f).forEach(el => el.addEventListener("input", update));
+f.dateIn.addEventListener("change", () => { f.dateOut.min = f.dateIn.value; if (f.dateOut.value && f.dateOut.value <= f.dateIn.value){ const d = new Date(f.dateIn.value); d.setDate(d.getDate()+1); f.dateOut.value = iso(d); } update(); });
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const missing = [];
+  if (!f.dateIn.value) missing.push(f.dateIn);
+  if (svc === "hotel" && !nights()) missing.push(f.dateOut);
+  if (!f.owner.value.trim()) missing.push(f.owner);
+  missing.forEach(el => { el.style.borderColor = "#d9534f"; el.addEventListener("input", () => el.style.borderColor = "", {once:true}); });
+  if (missing.length){ missing[0].focus(); return; }
+  window.open(waUrl(message()), "_blank", "noopener");
+});
+
+/* Sensible defaults so the preview is never empty */
+(() => { const a = new Date(); a.setDate(a.getDate()+3); const b = new Date(a); b.setDate(b.getDate()+2); f.dateIn.value = iso(a); f.dateOut.value = iso(b); })();
+setService("hotel");
+</script>
+</body>
+</html>
