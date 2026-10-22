@@ -113,7 +113,7 @@ section{padding:clamp(64px,8vw,110px) 0}
 .trust small{color:var(--muted)}
 
 /* Intro */
-.intro .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center}
+.intro .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);align-items:center}
 .intro .photo{position:relative}
 .intro .photo img{border-radius:var(--r);box-shadow:var(--shadow);aspect-ratio:4/3.6;object-fit:cover;width:100%}
 .intro .photo .float{position:absolute;right:-18px;bottom:-22px;background:var(--paper);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center;max-width:280px}
@@ -190,7 +190,7 @@ section{padding:clamp(64px,8vw,110px) 0}
 
 /* Reviews */
 .reviews{background:var(--paper)}
-.reviews .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.reviews .grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:center}
 .rating-card{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:34px;display:grid;gap:14px;text-align:center;justify-items:center}
 .rating-card .big{font-family:var(--font-display);font-size:5rem;line-height:1;color:var(--ink)}
 .rating-card .stars{color:#F5B301;font-size:1.6rem;letter-spacing:4px}
@@ -206,8 +206,8 @@ section{padding:clamp(64px,8vw,110px) 0}
 
 /* Booking */
 .booking{background:linear-gradient(180deg,var(--cream),#F3EADC)}
-.booking .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:start}
-.book-card{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(22px,3vw,34px);display:grid;gap:18px}
+.booking .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}
+.book-card{background:var(--paper);border-radius:var(--r);box-shadow:var(--shadow);padding:clamp(22px,3vw,34px);display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0}
 .book-card h3{font-size:1.5rem}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--cream);padding:6px;border-radius:14px}
 .seg button{padding:12px 8px;border-radius:10px;font-weight:700;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.9rem;transition:background .2s,color .2s}
@@ -215,7 +215,7 @@ section{padding:clamp(64px,8vw,110px) 0}
 .seg button.on{background:var(--teal);color:#fff;box-shadow:0 6px 16px rgba(47,127,147,.3)}
 .field{display:grid;gap:6px}
 .field label{font-size:.82rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:inherit;color:var(--ink);transition:border .2s,box-shadow .2s}
+.field input,.field select,.field textarea{width:100%;min-width:0;min-height:50px;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:inherit;color:var(--ink);transition:border .2s,box-shadow .2s}
 .field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 4px var(--teal-soft)}
 .field textarea{min-height:84px;resize:vertical}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -224,15 +224,15 @@ section{padding:clamp(64px,8vw,110px) 0}
 .estimate .total{display:flex;justify-content:space-between;align-items:baseline;font-weight:800;border-top:1px dashed var(--line);padding-top:8px;margin-top:4px}
 .estimate .total b{font-family:var(--font-display);font-size:1.6rem;color:var(--teal-deep)}
 .estimate small{color:var(--muted);font-size:.78rem}
-.book-card .btn-wa{width:100%;font-size:1.05rem;padding:16px}
+.book-card .btn-wa{width:100%;font-size:1.05rem;padding:16px;white-space:normal;text-align:center}
 .book-card .fine{font-size:.82rem;color:var(--muted);text-align:center}
-.preview{background:#E7F8EE;border:1px solid #BFEBD1;border-radius:14px;padding:14px 16px;font-size:.9rem;white-space:pre-wrap;color:#1b4d31;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.5;max-height:200px;overflow:auto}
+.preview{overflow-wrap:anywhere;background:#E7F8EE;border:1px solid #BFEBD1;border-radius:14px;padding:14px 16px;font-size:.9rem;white-space:pre-wrap;color:#1b4d31;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.5;max-height:200px;overflow:auto}
 .preview-label{font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
 .preview-label i{width:8px;height:8px;border-radius:50%;background:var(--wa);display:inline-block;animation:pulse 1.6s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .booking .side{display:grid;gap:22px;position:sticky;top:96px}
 .booking .side .list{display:grid;gap:16px}
-.booking .side .list div{display:flex;gap:14px;align-items:flex-start}
+.booking .side .list>div{display:flex;gap:14px;align-items:flex-start}
 .booking .side .list svg{width:26px;height:26px;color:var(--teal);flex:none}
 .booking .side .list b{display:block}
 .booking .side .list p{color:var(--muted);font-size:.95rem}
@@ -240,7 +240,7 @@ section{padding:clamp(64px,8vw,110px) 0}
 .phone-mock .hdr{display:flex;align-items:center;gap:10px;font-weight:700}
 .phone-mock .hdr .av{width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:.8rem}
 .phone-mock .hdr small{display:block;color:var(--wa-deep);font-weight:600;font-size:.75rem}
-.bubble{background:#DCF8C6;border-radius:12px 12px 12px 2px;padding:10px 12px;font-size:.88rem;max-width:88%}
+.bubble{overflow-wrap:anywhere;background:#DCF8C6;border-radius:12px 12px 12px 2px;padding:10px 12px;font-size:.88rem;max-width:88%}
 .bubble.me{background:#F1F0F0;border-radius:12px 12px 2px 12px;justify-self:end}
 
 /* FAQ */
@@ -254,13 +254,13 @@ details p{color:var(--muted);padding:0 0 18px;font-size:.97rem}
 
 /* Location */
 .location{background:var(--paper)}
-.location .grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(28px,4vw,56px);align-items:stretch}
+.location .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,4vw,56px);align-items:stretch}
 .contact-list{display:grid;gap:18px;margin-top:26px}
-.contact-list a,.contact-list div{display:flex;gap:14px;align-items:flex-start}
+.contact-list>a,.contact-list>div{display:flex;gap:14px;align-items:flex-start}
 .contact-list .ic{width:46px;height:46px;border-radius:14px;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;flex:none}
 .contact-list .ic svg{width:22px;height:22px}
 .contact-list b{display:block;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.contact-list span{font-weight:600}
+.contact-list span{font-weight:600;overflow-wrap:anywhere}
 .contact-list a:hover span{color:var(--teal)}
 .map{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);min-height:420px;position:relative;background:var(--teal-soft)}
 .map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
@@ -303,18 +303,122 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
   .booking .side{position:static}
   .suites .cell{grid-column:span 6}.suites .cell.big{grid-column:span 12}
 }
+/* Phone layout: ~90% of visitors */
+.mbar{display:none}
+.hide-m{display:inline}
 @media (max-width:720px){
+  html{-webkit-tap-highlight-color:transparent}
+  body{padding-bottom:calc(66px + env(safe-area-inset-bottom,0px))}
+  section{padding:56px 0}
+  h2{font-size:clamp(1.8rem,7.6vw,2.3rem)}
+  .lede{font-size:1rem}
+  .sec-head{margin-bottom:26px}
+  .hide-m{display:none}
+  .btn{padding:14px 20px}
+  /* nav */
+  .nav{padding:12px 0}.nav.solid{padding:8px 0}
   .nav-links,.nav .btn-wa{display:none}
   .burger{display:grid}
-  .svc-grid{grid-template-columns:1fr}
-  .steps .grid{grid-template-columns:1fr}
-  .row2{grid-template-columns:1fr}
-  .suites .grid{grid-auto-rows:180px}
+  .brand{font-size:1.1rem}.brand .mark{width:38px;height:38px}
+  /* hero */
+  .hero{min-height:min(100svh,780px)}
+  .hero .wrap{padding:108px 0 64px;gap:18px}
+  .hero .pill{font-size:.82rem;padding:7px 14px 7px 9px}
+  .hero h1{font-size:clamp(2.1rem,10.5vw,2.9rem);max-width:none}
+  .hero p{font-size:1rem}
+  .hero .cta{display:grid;grid-template-columns:1fr;gap:10px}
+  .hero .cta .btn{width:100%}
+  .hero .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;font-size:.84rem;padding-top:14px}
+  .hero .facts svg{width:16px;height:16px}
+  .scroll-hint{display:none}
+  .hero .dots{left:50%;right:auto;bottom:18px;transform:translateX(-50%)}
+  /* trust strip: 2x2 */
+  .trust{padding:18px 0}
+  .trust .wrap{grid-template-columns:1fr 1fr;gap:12px}
+  .trust .item{gap:10px;align-items:flex-start}
+  .trust .ic{width:38px;height:38px;border-radius:11px}.trust .ic svg{width:19px;height:19px}
+  .trust b{font-size:.92rem;line-height:1.25}.trust small{font-size:.78rem;line-height:1.3;display:block}
+  /* intro */
+  .intro .photo img{aspect-ratio:4/3}
+  .intro .photo .float{position:static;margin-top:12px;max-width:none}
+  /* services */
+  .svc-grid{grid-template-columns:1fr;gap:18px}
+  .svc .img{aspect-ratio:16/10}
+  .svc .body{padding:20px}
+  .svc .body .btn{width:100%}
+  /* suites */
+  .suites .grid{grid-auto-rows:190px;gap:10px}
   .suites .cell,.suites .cell.big{grid-column:span 12}.suites .cell.tall{grid-row:span 1}
-  .intro .photo .float{right:8px;bottom:-16px}
-  .hero .wrap{padding-top:120px}
-  .fab span{display:none}.fab{padding:14px}
-  .seg button{font-size:.8rem}
+  .suites .cell.big{grid-row:span 1}
+  .suites .feat{grid-template-columns:1fr;gap:10px;margin-top:22px}
+  .suites .feat div{grid-template-columns:auto 1fr;gap:4px 14px;padding:16px;align-items:center}
+  .suites .feat svg{grid-row:1/3;width:26px;height:26px}
+  .suites .feat b{font-size:1rem}.suites .feat p{font-size:.9rem;grid-column:2}
+  /* steps: number beside text */
+  .steps .grid{grid-template-columns:1fr;gap:12px}
+  .step{grid-template-columns:auto 1fr;gap:2px 16px;padding:18px;align-items:center}
+  .step .n{grid-row:1/3;font-size:2rem}
+  .step b{font-size:1.02rem}.step p{font-size:.92rem;grid-column:2}
+  /* gallery: two columns */
+  .gallery .masonry{columns:2;column-gap:10px}
+  .gallery .masonry a{margin-bottom:10px;border-radius:10px}
+  .ig-cta{margin-top:18px}.ig-cta .btn{width:100%}
+  /* reviews */
+  .rating-card{padding:26px 20px;gap:10px}
+  .rating-card .big{font-size:4rem}
+  .rating-card .btn{width:100%}
+  .why{gap:14px}.why .ic{width:40px;height:40px}.why p{font-size:.92rem}
+  /* booking */
+  .booking .grid{grid-template-columns:minmax(0,1fr)}
+  .booking .side{position:static}
+  .book-card{padding:20px 16px;border-radius:16px}
+  .book-card h3{font-size:1.3rem}
+  .seg{gap:6px;padding:5px}
+  .seg button{font-size:.78rem;padding:10px 4px}
+  .row2{grid-template-columns:1fr 1fr;gap:10px}
+  .row2 .field label{font-size:.72rem}
+  .field label{font-size:.76rem}
+  .field input,.field select,.field textarea{padding:12px 12px;font-size:16px}
+  .estimate{padding:14px}
+  .estimate .total b{font-size:1.4rem}
+  .preview{font-size:.82rem;max-height:150px}
+  .book-card .btn-wa{font-size:1rem}
+  .booking .side .list>div{gap:12px}
+  .booking .side .list svg{width:24px;height:24px}
+  .phone-mock{padding:16px}
+  .bubble{max-width:92%;font-size:.85rem}
+  /* faq */
+  .faq .grid{grid-template-columns:1fr;gap:10px}
+  details{padding:2px 16px}
+  summary{padding:14px 0;font-size:.98rem}
+  /* location */
+  .location .grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .contact-list{gap:14px}
+  .contact-list .ic{width:40px;height:40px}
+  .contact-list span{font-size:.95rem}
+  .map{min-height:300px;border-radius:16px}.map iframe{min-height:300px}
+  .map .open{left:12px;bottom:12px;padding:11px 18px;font-size:.92rem}
+  /* final + footer */
+  .final .btn{width:100%}
+  footer .wrap{flex-direction:column;align-items:center;text-align:center;gap:14px}
+  footer nav{justify-content:center;gap:12px 16px}
+  /* bottom action bar replaces the floating button */
+  .fab{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:6px;position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(251,247,241,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px;border-radius:12px;font-weight:800;font-size:.86rem;padding:0 6px;color:var(--ink);background:var(--paper);border:1.5px solid var(--line)}
+  .mbar a svg{width:20px;height:20px;flex:none}
+  .mbar a.wa{background:var(--wa);color:#fff;border-color:var(--wa);box-shadow:0 6px 16px rgba(37,211,102,.35)}
+  /* lightbox controls at the bottom so they never cover the photo */
+  .lightbox img{max-height:72vh;max-width:94vw}
+  .lightbox .prev,.lightbox .next{top:auto;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:none}
+  .lightbox .prev{left:calc(50% - 64px)}.lightbox .next{right:calc(50% - 64px)}
+  /* mobile menu */
+  .mobile-menu{font-size:1.6rem;gap:20px}
+}
+@media (max-width:380px){
+  .row2{grid-template-columns:1fr}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .hero .facts{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
@@ -357,7 +461,7 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
     <img src="images/web/playroom.jpg" alt="Cats playing in the open play area">
   </div>
   <div class="wrap">
-    <span class="pill"><span class="stars">★★★★★</span> 4.9 on Google · Loved by Putrajaya cat parents</span>
+    <span class="pill"><span class="stars">★★★★★</span> 4.9 on Google<span class="hide-m"> · Loved by Putrajaya cat parents</span></span>
     <h1>A boutique hotel where your cat is the <em>honoured guest</em></h1>
     <p>Private wooden suites, a certified professional groomer and a sunlit play hall in Presint 15, Putrajaya. Drop off with peace of mind, pick up a happy cat.</p>
     <div class="cta">
@@ -602,7 +706,7 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
           <div class="preview" id="preview"></div>
           <button type="submit" class="btn btn-wa">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
-            Send booking request on WhatsApp
+            Send request on WhatsApp
           </button>
           <p class="fine">Opens WhatsApp to <b>+60 11-3989 7014</b>. Nothing is charged online; we confirm the final rate by reply.</p>
         </div>
@@ -702,6 +806,12 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg>
   <span>Chat with us</span>
 </a>
+
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:+601139897014"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2.2z"/></svg><span>Call</span></a>
+  <a href="#" class="wa-link wa" data-msg="Hi Kitikat Hotel! I'd like to make a booking."><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.7-.4zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.3 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15.1 3.7 13.6 3.7 12c0-4.6 3.7-8.3 8.3-8.3s8.3 3.7 8.3 8.3-3.7 8.2-8.3 8.2z"/></svg><span>WhatsApp</span></a>
+  <a href="#book"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M9 15l2 2 4-4"/></svg><span>Book</span></a>
+</nav>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Photo viewer">
   <button class="x" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
